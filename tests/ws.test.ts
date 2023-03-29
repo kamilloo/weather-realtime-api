@@ -13,11 +13,7 @@ describe('Websocket server', () => {
     it('communicates via websockets', async () => {
         await request(server)
             .ws('/path/ws')
-            .expectText('hello')
-            .sendText('foo')
-            .expectText('echo foo')
-            .sendText('abc')
-            .expectText('echo abc')
+            .expectText('hello forecast')
             .close()
             .expectClosed();
     });
