@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "npx tsc && node ./build/app.js",
-    "test": "nodemon --watch . --ext ts --exec \"mocha -r ts-node/register tests/**/*.test.ts\""
+    "start-ws": "npx tsc && node ./build/ws.js",
+    "test": "nodemon --watch . --ext ts --exec \\\"mocha -r ts-node/register src/tests/**/*.test.ts\\\""
   },
   "keywords": [],
   "author": "",

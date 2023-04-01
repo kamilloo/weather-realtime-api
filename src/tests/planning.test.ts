@@ -1,14 +1,14 @@
 import request from 'superwstest';
-import server from '../src/ws';
-import {IncomingMessage} from "../src/Http/STOMP/IncomingMessage";
-import {Forecast} from "../src/models/Forecast";
+import server from '../ws';
+import {IncomingMessage} from "../Http/STOMP/IncomingMessage";
+import {Forecast} from "../models/Forecast";
 import Chai from "chai"
-import {IncomingMessageType} from "../src/Http/STOMP/IncomingMessageType";
-import {OutputMessage} from "../src/Http/STOMP/OutputMessage";
-import {Trend} from "../src/models/Trend";
-import {TrendType} from "../src/Http/STOMP/TrendType";
-import {Planning} from "../src/models/Planning";
-import {PlaningType} from "../src/Http/STOMP/PlaningType";
+import {IncomingMessageType} from "../Http/STOMP/IncomingMessageType";
+import {OutputMessage} from "../Http/STOMP/OutputMessage";
+import {Trend} from "../models/Trend";
+import {TrendType} from "../Http/STOMP/TrendType";
+import {Planning} from "../models/Planning";
+import {PlaningType} from "../Http/STOMP/PlaningType";
 
 describe('Websocket server', () => {
     beforeEach((done) => {
