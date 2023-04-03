@@ -4,21 +4,29 @@ import {IncomingMessage} from "./Http/STOMP/IncomingMessage";
 import {Forecast} from "./models/Forecast";
 import {Handler} from "./Ws/Handler";
 import {clearInterval} from "timers";
+import {constants} from "os";
 
 const PORT: number = 3001;
 const server = http.createServer();
 const wss = new Websocket.Server({server})
 const handler = new Handler();
 
-let forecastTimeout:NodeJS.Timeout
+let forecastTimeout:NodeJS.Timeout;
 let degrees = 1;
 
 wss.on('connection', (ws) => {
     ws.on('message', (message) => {
 
-        let forecastRequest:IncomingMessage = JSON.parse(message.toString())
-        console.log(forecastRequest)
-
+        const json = function (raw:Websocket.RawData){
+            try {
+                return JSON.parse(raw.toString())
+            }
+            catch (err){
+                console.error(err)
+                return {}
+            }
+        }
+        let forecastRequest:IncomingMessage = json(message)
         if (forecastRequest.type !== undefined){
             let controller = handler.handle(forecastRequest.type)
             let forecast = controller.index(forecastRequest)
@@ -30,24 +38,14 @@ wss.on('connection', (ws) => {
     })
 
     ws.send("hello forecast")
+    let clientSendMessage = wss.clients.size
     forecastTimeout = setInterval(() => {
-        degrees++
-        ws.send("forecast is now " + degrees)
+        ws.send("forecast is now " + clientSendMessage)
     }, 1000)
 
     ws.on("close", () => {
         clearTimeout(forecastTimeout)
     })
-})
-
-
-
-server.listen(PORT, (): void => {
-    console.log('Server is running on:', PORT);
-});
-
-process.on('uncaughtException', (error) => {
-    console.log(error.message)
 })
 
 export default server

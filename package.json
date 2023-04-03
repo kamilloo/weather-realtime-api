@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx tsc && node ./build/app.js",
-    "start-ws": "npx tsc && node ./build/ws.js",
+    "start": "npx tsc && node ./build/app/app.js",
+    "start-ws": "npx tsc && node ./build/app/ws.js",
     "test": "nodemon --watch . --ext ts --exec \\\"mocha -r ts-node/register src/tests/**/*.test.ts\\\""
   },
   "keywords": [],

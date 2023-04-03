@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const chai_1 = require("chai");
-const app_1 = __importDefault(require("../app"));
+const app_1 = __importDefault(require("../app/app"));
 const supertest_1 = require("supertest");
 describe("Index Test", () => {
     it('should POST /api/todo v2', function () {

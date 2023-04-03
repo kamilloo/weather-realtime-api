@@ -1,5 +1,6 @@
 import express, { Application, Request, Response } from 'express';
 import {json} from "body-parser";
+import ws from "./ws";
 
 const app: Application = express();
 
@@ -15,8 +16,11 @@ app.get('/api/todo', (req: Request, res: Response): void => {
         error: null
     });
 });
-
 app.listen(PORT, (): void => {
+    console.log('Server is running on:', PORT);
+});
+
+ws.listen(PORT, (): void => {
     console.log('Server is running on:', PORT);
 });
 

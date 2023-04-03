@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const superwstest_1 = __importDefault(require("superwstest"));
-const ws_1 = __importDefault(require("../ws"));
+const ws_1 = __importDefault(require("../app/ws"));
 describe('Websocket server', () => {
     beforeEach((done) => {
         ws_1.default.listen(0, 'localhost', done);

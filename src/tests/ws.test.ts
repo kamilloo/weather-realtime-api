@@ -1,5 +1,5 @@
 import request from 'superwstest';
-import server from '../ws';
+import server from '../app/ws';
 
 describe('Websocket server', () => {
     beforeEach((done) => {
