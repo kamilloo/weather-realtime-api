@@ -1,6 +1,6 @@
 import http from "http";
 import Websocket from 'ws';
-import {IncomingMessage} from "./Http/STOMP/IncomingMessage";
+import {IncomingMessage} from "../Http/STOMP/IncomingMessage";
 import {Forecast} from "./models/Forecast";
 import {Handler} from "./Ws/Handler";
 import {clearInterval} from "timers";

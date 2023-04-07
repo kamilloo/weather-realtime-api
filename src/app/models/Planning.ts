@@ -1,4 +1,4 @@
-import {PlaningType} from "../Http/STOMP/PlaningType";
+import {PlaningType} from "../../Http/STOMP/PlaningType";
 import {Forecast} from "./Forecast";
 
 export interface Planning {

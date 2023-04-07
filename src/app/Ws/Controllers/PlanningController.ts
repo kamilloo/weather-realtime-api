@@ -1,10 +1,10 @@
-import {OutputMessage} from "../../Http/STOMP/OutputMessage";
+import {OutputMessage} from "../../../Http/STOMP/OutputMessage";
 import {Forecast} from "../../models/Forecast";
-import {IncomingMessageType} from "../../Http/STOMP/IncomingMessageType";
-import {IncomingMessage} from "../../Http/STOMP/IncomingMessage";
+import {IncomingMessageType} from "../../../Http/STOMP/IncomingMessageType";
+import {IncomingMessage} from "../../../Http/STOMP/IncomingMessage";
 import {Trend} from "../../models/Trend";
-import {TrendType} from "../../Http/STOMP/TrendType";
-import {PlaningType} from "../../Http/STOMP/PlaningType";
+import {TrendType} from "../../../Http/STOMP/TrendType";
+import {PlaningType} from "../../../Http/STOMP/PlaningType";
 import {Planning} from "../../models/Planning";
 import Chai from "chai";
 
