@@ -1,5 +1,11 @@
 {
   "compilerOptions": {
+
+      "lib": ["es6", "dom"],
+      "types": ["reflect-metadata", "mocha", "chai"],
+      "moduleResolution": "node",
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
     /* Projects */

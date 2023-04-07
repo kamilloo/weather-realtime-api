@@ -1,20 +1,22 @@
 import {Forecast} from "../app/models/Forecast";
 import {ForecastDate} from "../app/models/DTO/ForecastDate";
-import {ForecastApi} from "./contracts/ForecastApi";
+import {IForecastApi} from "./contracts/IForecastApi";
 import {WeatherApiResponse} from "../app/models/Api/WeatherApiResponse";
 import {DailyForecastParser} from "./DailyForecastParser";
+import {inject, injectable} from "inversify";
+import TYPES from "../type";
 
+@injectable()
 export class ForecastService {
 
-    constructor(private readonly forecastApi:ForecastApi,
+    constructor(@inject(TYPES.FakeApi) private readonly forecastApi:IForecastApi,
                 private readonly forecastApiParser:DailyForecastParser) {
 
     }
 
     daily(forecastDate:ForecastDate): Forecast{
-
         let forecastRaw:WeatherApiResponse = this.forecastApi.getByDate(forecastDate.date);
-        return this.forecastApiParser.parse(forecastRaw);
+        return this.forecastApiParser.parse([]);
 
         //parse daily
         //get from api
