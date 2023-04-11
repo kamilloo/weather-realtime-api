@@ -3,8 +3,7 @@ import Websocket from 'ws';
 import {IncomingMessage} from "../Http/STOMP/IncomingMessage";
 import {Forecast} from "./models/Forecast";
 import {Handler} from "./Ws/Handler";
-import {clearInterval} from "timers";
-import {constants} from "os";
+import {JsonParser} from "./Ws/middlewares/JsonParser";
 
 const PORT: number = 3001;
 const server = http.createServer();
@@ -15,21 +14,13 @@ let forecastTimeout:NodeJS.Timeout;
 let degrees = 1;
 
 wss.on('connection', (ws) => {
-    ws.on('message', (message) => {
+    ws.on('message',async (message) => {
 
-        const json = function (raw:Websocket.RawData){
-            try {
-                return JSON.parse(raw.toString())
-            }
-            catch (err){
-                console.error(err)
-                return {}
-            }
-        }
-        let forecastRequest:IncomingMessage = json(message)
+
+        let forecastRequest:IncomingMessage = (new JsonParser).json(message)
         if (forecastRequest.type !== undefined){
             let controller = handler.handle(forecastRequest.type)
-            let forecast = controller.index(forecastRequest)
+            let forecast = await controller.index(forecastRequest)
             ws.send(JSON.stringify(forecast))
         }
         else {

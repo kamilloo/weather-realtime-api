@@ -1,14 +1,14 @@
 import {WeatherApiResponse} from "../../app/models/Api/WeatherApiResponse";
 import {IForecastApi} from "../contracts/IForecastApi";
 import {injectable} from "inversify";
-import axios, {isCancel, AxiosError, AxiosResponse} from 'axios';
+import axios, {isCancel, AxiosError, AxiosResponse, isAxiosError} from 'axios';
 import * as querystring from "querystring";
 
 @injectable()
 export class ForecastApi implements IForecastApi{
     private url:string = 'https://api.open-meteo.com/v1/forecast';
 
-    async getByDate(date:string):WeatherApiResponse{
+    async getByDate(date:string):Promise<WeatherApiResponse>{
         let queryParams= {
             latitude:  52.23,
             longitude:  16.37,
@@ -23,16 +23,24 @@ export class ForecastApi implements IForecastApi{
                 data: response.data
 
             }
-        }catch (e) {
-            if (e.response) {
+        }catch (error) {
+            if (this.axiosError(error)) {
                 return {
-                    status: e.response.status,
-                    error: e.response.message,
-                    data: [{}]
-
+                    data: [{}],
+                    error: error.message,
+                    status: error.status ?? 400
                 }
             } else {
+                return {
+                    data: [{}],
+                    error: 'Unknown Error',
+                    status: 400
+                }
             }
         }
+    }
+
+    private axiosError(error:any) :error is AxiosError{
+        return error.isAxiosError
     }
 }

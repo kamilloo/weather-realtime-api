@@ -8,10 +8,10 @@ import {ForecastDate} from "../../models/DTO/ForecastDate";
 export class ForecastController {
     constructor(protected readonly forecast:ForecastService) {
     }
-    index(incomingMessageParams: IncomingMessage):OutputMessage
+    async index(incomingMessageParams: IncomingMessage):Promise<OutputMessage>
     {
         let forecastDate:ForecastDate = incomingMessageParams.params;
-        const forecast = this.forecast.daily(forecastDate)
+        const forecast = await this.forecast.daily(forecastDate)
         return {
             type: IncomingMessageType.FORECAST,
             data: forecast,

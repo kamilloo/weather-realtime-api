@@ -1,5 +1,5 @@
 import {WeatherApiResponse} from "../../app/models/Api/WeatherApiResponse";
 
 export interface IForecastApi {
-    getByDate(date:string):WeatherApiResponse;
+    getByDate(date:string):Promise<WeatherApiResponse>;
 }
