@@ -63,7 +63,7 @@ describe('Forecast Service', () => {
         let apiFailedReason = 'Fake api failed';
         fakeApiMock.expects("getByDate").once().resolves({
             status: 200,
-            data: new Array<Weathe>()
+            data: new Array<any>()
         } as WeatherApiResponse);
 
         const forecast:NotFound|any = await service.daily(forecastDaily);
