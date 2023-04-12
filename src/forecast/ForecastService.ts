@@ -25,14 +25,9 @@ export class ForecastService {
             return this.forecastApiParser.parse(forecastRaw.data[0]);
         }else {
             return {
-                reason: 'weather no found'
+                reason: 'Weather not found'
             }as NotFound
         }
 
-        //parse daily
-        //get from api
-        //parse api
-        //compute logic/map to forecast interface
-        //return data
     }
 }

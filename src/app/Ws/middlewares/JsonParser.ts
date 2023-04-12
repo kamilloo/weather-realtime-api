@@ -6,7 +6,6 @@ export class JsonParser {
             return JSON.parse(raw.toString())
         }
         catch (err){
-            console.error(err)
             return {}
         }
     }

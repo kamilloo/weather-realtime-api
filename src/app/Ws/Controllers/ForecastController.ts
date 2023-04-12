@@ -4,9 +4,12 @@ import {IncomingMessageType} from "../../../Http/STOMP/IncomingMessageType";
 import {IncomingMessage} from "../../../Http/STOMP/IncomingMessage";
 import {ForecastService} from "../../../forecast/ForecastService";
 import {ForecastDate} from "../../models/DTO/ForecastDate";
+import {inject, injectable} from "inversify";
+import {MessageController} from "./MessageController";
 
-export class ForecastController {
-    constructor(protected readonly forecast:ForecastService) {
+@injectable()
+export class ForecastController implements MessageController {
+    constructor(@inject(ForecastService) protected readonly forecast:ForecastService) {
     }
     async index(incomingMessageParams: IncomingMessage):Promise<OutputMessage>
     {

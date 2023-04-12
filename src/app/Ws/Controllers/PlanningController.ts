@@ -7,9 +7,12 @@ import {TrendType} from "../../../Http/STOMP/TrendType";
 import {PlaningType} from "../../../Http/STOMP/PlaningType";
 import {Planning} from "../../models/Planning";
 import Chai from "chai";
+import {MessageController} from "./MessageController";
+import {injectable} from "inversify";
 
-export class PlanningController {
-    index(incomingMessageParams: IncomingMessage):OutputMessage
+@injectable()
+export class PlanningController implements MessageController{
+    async index(incomingMessageParams: IncomingMessage):Promise<OutputMessage>
     {
         const saturday:Forecast = {
             degrees: 30,

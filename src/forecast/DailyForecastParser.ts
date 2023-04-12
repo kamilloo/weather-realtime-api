@@ -6,7 +6,9 @@ import {WeatherApiDailyForecast} from "../app/models/Api/WeatherApiDailyForecast
 import {WeatherApiData} from "../app/models/Api/WeatherApiData";
 import {WeatherCondition} from "./parsers/WeatherCondition";
 import {WeatherFilling} from "./parsers/WeatherFilling";
+import {injectable} from "inversify";
 
+@injectable()
 export class DailyForecastParser {
     constructor() {
 
