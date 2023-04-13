@@ -10,8 +10,7 @@ export class FakeApi implements IForecastApi {
         return Promise.resolve({
             status: 200,
             error: undefined,
-            data: [
-                {
+            data: {
                     "latitude": 52.22,
                     "longitude": 16.38,
                     "generationtime_ms": 0.2840757369995117,
@@ -28,7 +27,6 @@ export class FakeApi implements IForecastApi {
                         "time": "2023-04-11T10:00"
                     } as WeatherApiDailyForecast
                 } as WeatherApiData
-            ]
         })
     }
 }

@@ -1,36 +1,17 @@
 import http from "http";
 import Websocket from 'ws';
-import {IncomingMessage} from "./Http/STOMP/IncomingMessage";
+import {IncomingMessage} from "./http/STOMP/IncomingMessage";
 import {Forecast} from "./models/Forecast";
-import {WebSocketHandler} from "./Ws/WebSocketHandler";
-import {JsonParser} from "./Ws/middlewares/JsonParser";
+import {WebSocketHandler} from "./ws/WebSocketHandler";
+import {JsonParser} from "./ws/middlewares/JsonParser";
 import {Container} from "inversify";
-import {MessageController} from "./Ws/Controllers/MessageController";
-import {ForecastController} from "./Ws/Controllers/ForecastController";
-import {ForecastService} from "../forecast/ForecastService";
-import {TrendController} from "./Ws/Controllers/TrendController";
-import {PlanningController} from "./Ws/Controllers/PlanningController";
 import TYPES from "../type";
-import {IForecastApi} from "../forecast/contracts/IForecastApi";
-import {FakeApi} from "../forecast/fake/FakeApi";
-import {DailyForecastParser} from "../forecast/DailyForecastParser";
-import {ForecastApi} from "../forecast/api/ForecastApi";
+import container from "../bidings";
 
 const server = http.createServer();
 const wss = new Websocket.Server({server})
 
-const container = new Container()
-container.bind<MessageController>(ForecastController).to(ForecastController);
-container.bind<MessageController>(TrendController).to(TrendController);
-container.bind<PlanningController>(PlanningController).to(PlanningController);
-container.bind<WebSocketHandler>(WebSocketHandler).to(WebSocketHandler)
-container.bind<ForecastService>(ForecastService).to(ForecastService)
-container.bind<IForecastApi>(TYPES.FakeApi).to(FakeApi)
-container.bind<IForecastApi>(TYPES.ForecastApi).to(ForecastApi)
-container.bind<DailyForecastParser>(DailyForecastParser).to(DailyForecastParser)
-
 const handler = container.get<WebSocketHandler>(WebSocketHandler);
-
 
 let forecastTimeout:NodeJS.Timeout;
 

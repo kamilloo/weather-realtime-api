@@ -1,9 +1,9 @@
-import {OutputMessage} from "../../Http/STOMP/OutputMessage";
+import {OutputMessage} from "../../http/STOMP/OutputMessage";
 import {Forecast} from "../../models/Forecast";
-import {IncomingMessageType} from "../../Http/STOMP/IncomingMessageType";
-import {IncomingMessage} from "../../Http/STOMP/IncomingMessage";
+import {IncomingMessageType} from "../../http/STOMP/IncomingMessageType";
+import {IncomingMessage} from "../../http/STOMP/IncomingMessage";
 import {Trend} from "../../models/Trend";
-import {TrendType} from "../../Http/STOMP/TrendType";
+import {TrendType} from "../../http/STOMP/TrendType";
 import {injectable} from "inversify";
 import {MessageController} from "./MessageController";
 

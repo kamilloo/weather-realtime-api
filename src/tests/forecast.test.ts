@@ -1,11 +1,11 @@
 import "reflect-metadata";
 import request from 'superwstest';
 import server from '../app/ws';
-import {IncomingMessage} from "../app/Http/STOMP/IncomingMessage";
+import {IncomingMessage} from "../app/http/STOMP/IncomingMessage";
 import {Forecast} from "../app/models/Forecast";
 import Chai from "chai"
-import {IncomingMessageType} from "../app/Http/STOMP/IncomingMessageType";
-import {OutputMessage} from "../app/Http/STOMP/OutputMessage";
+import {IncomingMessageType} from "../app/http/STOMP/IncomingMessageType";
+import {OutputMessage} from "../app/http/STOMP/OutputMessage";
 import {FillingType} from "../forecast/descriptors/FillingType";
 import {ConditionType} from "../forecast/descriptors/ConditionType";
 
