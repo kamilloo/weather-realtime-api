@@ -6,11 +6,12 @@ import {DailyForecastParser} from "./DailyForecastParser";
 import {inject, injectable} from "inversify";
 import TYPES from "../type";
 import {NotFound} from "../app/models/NotFound";
+import appConfig from "../config/app.config";
 
 @injectable()
 export class ForecastService {
 
-    constructor(@inject(TYPES.FakeApi) private readonly forecastApi:IForecastApi,
+    constructor(@inject(appConfig.open_meteo.live ? TYPES.ForecastApi : TYPES.FakeApi ) private readonly forecastApi:IForecastApi,
                 private readonly forecastApiParser:DailyForecastParser) {
     }
 

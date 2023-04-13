@@ -2,13 +2,10 @@ import "reflect-metadata";
 import express, { Application, Request, Response } from 'express';
 import {json} from "body-parser";
 import ws from "./ws";
-
 const app: Application = express();
-
-const PORT: number = 3001;
+import appConfig from "../config/app.config";
 
 app.use(json())
-
 app.get('/api/todo', (req: Request, res: Response): void => {
     res.json({
         data: {
@@ -17,12 +14,12 @@ app.get('/api/todo', (req: Request, res: Response): void => {
         error: null
     });
 });
-app.listen(PORT, (): void => {
-    console.log('Server is running on:', PORT);
+app.listen(appConfig.port, (): void => {
+    console.log('Server is running on:', appConfig.port);
 });
 
-ws.listen(PORT, (): void => {
-    console.log('Server is running on:', PORT);
+ws.listen(appConfig.port_ws, (): void => {
+    console.log('Server is running on:', appConfig.port_ws);
 });
 
 export default app

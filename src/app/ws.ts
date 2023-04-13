@@ -15,8 +15,6 @@ import {IForecastApi} from "../forecast/contracts/IForecastApi";
 import {FakeApi} from "../forecast/fake/FakeApi";
 import {DailyForecastParser} from "../forecast/DailyForecastParser";
 
-
-const PORT: number = 3001;
 const server = http.createServer();
 const wss = new Websocket.Server({server})
 
