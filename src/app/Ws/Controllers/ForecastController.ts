@@ -1,7 +1,7 @@
-import {OutputMessage} from "../../../Http/STOMP/OutputMessage";
+import {OutputMessage} from "../../Http/STOMP/OutputMessage";
 import {Forecast} from "../../models/Forecast";
-import {IncomingMessageType} from "../../../Http/STOMP/IncomingMessageType";
-import {IncomingMessage} from "../../../Http/STOMP/IncomingMessage";
+import {IncomingMessageType} from "../../Http/STOMP/IncomingMessageType";
+import {IncomingMessage} from "../../Http/STOMP/IncomingMessage";
 import {ForecastService} from "../../../forecast/ForecastService";
 import {ForecastDate} from "../../models/DTO/ForecastDate";
 import {inject, injectable} from "inversify";

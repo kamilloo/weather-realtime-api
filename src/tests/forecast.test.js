@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const superwstest_1 = __importDefault(require("superwstest"));
 const ws_1 = __importDefault(require("../app/ws"));
 const chai_1 = __importDefault(require("chai"));
-const IncomingMessageType_1 = require("../Http/STOMP/IncomingMessageType");
+const IncomingMessageType_1 = require("../app/Http/STOMP/IncomingMessageType");
 describe('Websocket server', () => {
     beforeEach((done) => {
         ws_1.default.listen(0, 'localhost', done);

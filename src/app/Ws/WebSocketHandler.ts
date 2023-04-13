@@ -1,4 +1,4 @@
-import {IncomingMessageType} from "../../Http/STOMP/IncomingMessageType";
+import {IncomingMessageType} from "../Http/STOMP/IncomingMessageType";
 import {ForecastController} from "./Controllers/ForecastController";
 import {TrendController} from "./Controllers/TrendController";
 import {PlanningController} from "./Controllers/PlanningController";

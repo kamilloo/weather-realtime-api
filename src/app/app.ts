@@ -6,7 +6,7 @@ const app: Application = express();
 import appConfig from "../config/app.config";
 
 app.use(json())
-app.get('/api/todo', (req: Request, res: Response): void => {
+app.get('/api/forecast', (req: Request, res: Response): void => {
     res.json({
         data: {
            message: "Hello"
@@ -19,7 +19,7 @@ app.listen(appConfig.port, (): void => {
 });
 
 ws.listen(appConfig.port_ws, (): void => {
-    console.log('Server is running on:', appConfig.port_ws);
+    console.log('WS Server is running on:', appConfig.port_ws);
 });
 
 export default app

@@ -11,7 +11,7 @@ import appConfig from "../config/app.config";
 @injectable()
 export class ForecastService {
 
-    constructor(@inject(appConfig.open_meteo.live ? TYPES.ForecastApi : TYPES.FakeApi ) private readonly forecastApi:IForecastApi,
+    constructor(@inject(appConfig.open_meteo == 'live' ? TYPES.ForecastApi : TYPES.FakeApi ) private readonly forecastApi:IForecastApi,
                 private readonly forecastApiParser:DailyForecastParser) {
     }
 
@@ -22,8 +22,8 @@ export class ForecastService {
                 reason: forecastRaw.error
             }as NotFound
         }
-        if (forecastRaw.data.length){
-            return this.forecastApiParser.parse(forecastRaw.data[0]);
+        if (forecastRaw.data){
+            return this.forecastApiParser.parse(forecastRaw.data);
         }else {
             return {
                 reason: 'Weather not found'
