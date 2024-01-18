@@ -5,6 +5,7 @@ import {PlanningController} from "./Controllers/PlanningController";
 import {inject, injectable} from "inversify";
 import Websocket from "ws";
 import {MessageController} from "./Controllers/MessageController";
+import {TodayController} from "./Controllers/TodayController";
 
 @injectable()
 export class WebSocketHandler {
@@ -15,11 +16,13 @@ export class WebSocketHandler {
         @inject(ForecastController) private forecastController: ForecastController,
         @inject(TrendController) private trendController: TrendController,
         @inject(PlanningController) private planningController: PlanningController,
+        @inject(TodayController) private todayController: TodayController,
     ) {
         this.handlers = {
             [IncomingMessageType.FORECAST]: forecastController,
             [IncomingMessageType.TRENDS]: trendController,
-            [IncomingMessageType.PLANNING]: planningController
+            [IncomingMessageType.PLANNING]: planningController,
+            [IncomingMessageType.TODAY]: todayController,
         }
     }
     handle(type: IncomingMessageType):MessageController{

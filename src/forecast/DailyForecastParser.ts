@@ -2,7 +2,7 @@ import {Forecast} from "../app/models/Forecast";
 import {ForecastDate} from "../app/models/DTO/ForecastDate";
 import {IForecastApi} from "./contracts/IForecastApi";
 import {WeatherApiResponse} from "../app/models/Api/WeatherApiResponse";
-import {WeatherApiDailyForecast} from "../app/models/Api/WeatherApiDailyForecast";
+import {WeatherApiCurrentWeather} from "../app/models/Api/WeatherApiCurrentWeather";
 import {WeatherApiData} from "../app/models/Api/WeatherApiData";
 import {WeatherCondition} from "./parsers/WeatherCondition";
 import {WeatherFilling} from "./parsers/WeatherFilling";

@@ -10,6 +10,7 @@ import {FakeApi} from "./forecast/fake/FakeApi";
 import {ForecastApi} from "./forecast/api/ForecastApi";
 import {DailyForecastParser} from "./forecast/DailyForecastParser";
 import TYPES from "./type";
+import {TodayController} from "./app/ws/Controllers/TodayController";
 
 const container = new Container()
 
@@ -21,5 +22,6 @@ container.bind<ForecastService>(ForecastService).to(ForecastService)
 container.bind<IForecastApi>(TYPES.FakeApi).to(FakeApi)
 container.bind<IForecastApi>(TYPES.ForecastApi).to(ForecastApi)
 container.bind<DailyForecastParser>(DailyForecastParser).to(DailyForecastParser)
+container.bind<MessageController>(TodayController).to(TodayController)
 
 export default container;

@@ -15,20 +15,38 @@ export class ForecastService {
                 private readonly forecastApiParser:DailyForecastParser) {
     }
 
-    async daily(forecastDate:ForecastDate): Promise<Forecast|NotFound>{
-        let forecastRaw:WeatherApiResponse = await this.forecastApi.getByDate(forecastDate.date);
-        if (forecastRaw.error){
+    async today(): Promise<Forecast|NotFound>{
+        let forecastRaw:WeatherApiResponse = await this.forecastApi.today();
+        return this.parseForecastResponse(forecastRaw);
+    }
+
+    // async weekly():{
+    //
+    // }
+    //
+    // async monthly():{
+    //
+    // }
+
+    private parseForecastResponse(forecastRaw: WeatherApiResponse) {
+        if (forecastRaw.error) {
             return {
                 reason: forecastRaw.error
-            }as NotFound
+            } as NotFound
         }
-        if (forecastRaw.data){
+        if (forecastRaw.data) {
             return this.forecastApiParser.parse(forecastRaw.data);
-        }else {
+        } else {
             return {
                 reason: 'Weather not found'
-            }as NotFound
+            } as NotFound
         }
+    }
+
+
+    async daily(forecastDate:ForecastDate): Promise<Forecast|NotFound>{
+        let forecastRaw:WeatherApiResponse = await this.forecastApi.getByDate(forecastDate.date);
+        return this.parseForecastResponse(forecastRaw);
 
     }
 }

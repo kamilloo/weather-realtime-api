@@ -1,4 +1,4 @@
-export interface WeatherApiDailyForecast {
+export interface WeatherApiCurrentWeather {
     "temperature": number,
     "windspeed": number,
     "winddirection": number,

@@ -10,7 +10,7 @@ import {NotFound} from "../../app/models/NotFound";
 import sinon from "sinon";
 import {ForecastApi} from "../../forecast/api/ForecastApi";
 import {WeatherApiResponse} from "../../app/models/Api/WeatherApiResponse";
-import {WeatherApiDailyForecast} from "../../app/models/Api/WeatherApiDailyForecast";
+import {WeatherApiCurrentWeather} from "../../app/models/Api/WeatherApiCurrentWeather";
 import {WeatherApiData} from "../../app/models/Api/WeatherApiData";
 import {FillingType} from "../../forecast/descriptors/FillingType";
 import {ConditionType} from "../../forecast/descriptors/ConditionType";
@@ -43,7 +43,7 @@ describe('Forecast Parser', () => {
                 "weathercode": weathercode,
                 "is_day": 1,
                 "time": "2023-04-11T10:00"
-            } as WeatherApiDailyForecast
+            } as WeatherApiCurrentWeather
         } as WeatherApiData;
 
         const forecast:Forecast = forecastParser.parse(forecastDaily);

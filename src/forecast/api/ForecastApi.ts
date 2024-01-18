@@ -18,6 +18,7 @@ export class ForecastApi implements IForecastApi{
         let queryRaw = querystring.stringify(queryParams)
         try {
             const response:AxiosResponse = await axios.get(this.url, { params: queryParams })
+            this.validateResponse(response)
             return {
                 status: response.status,
                 data: response.data
@@ -42,5 +43,14 @@ export class ForecastApi implements IForecastApi{
 
     private axiosError(error:any) :error is AxiosError{
         return error.isAxiosError
+    }
+
+    private validateResponse(response: AxiosResponse) {
+
+    }
+
+    today(): Promise<WeatherApiResponse> {
+        const today = new Date(Date.now())
+        return this.getByDate(today.toDateString());
     }
 }

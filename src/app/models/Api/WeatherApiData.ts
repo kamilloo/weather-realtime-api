@@ -1,4 +1,4 @@
-import {WeatherApiDailyForecast} from "./WeatherApiDailyForecast";
+import {WeatherApiCurrentWeather} from "./WeatherApiCurrentWeather";
 
 export interface WeatherApiData {
     "latitude": number,
@@ -8,5 +8,5 @@ export interface WeatherApiData {
     "timezone": string,
     "timezone_abbreviation": string,
     "elevation": number,
-    "current_weather": WeatherApiDailyForecast
+    "current_weather": WeatherApiCurrentWeather
 }
